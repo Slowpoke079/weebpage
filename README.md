@@ -14,7 +14,8 @@ What does it do?;
 What it does not;
 - It could crawl recursively, but i chose not to do so. Crawling recursively could impact your target negatively by accidentaly. For example doing a "GET" on a webpage url that triggers a SQL database reset etc.
 
-How to use?
+
+# How to use?
 
 $ git clone https://github.com/Slowpoke079/weebpage.git
 
@@ -24,16 +25,16 @@ $ chmod +x weebpage.py
 
 $ python3 weebpage.py
 
-#Now simply follow the script, trust me it is easy
+Now simply follow the script, trust me it is easy
+BuT i DoN't HaVe PyThOn3! -> sudo apt install -y python3 python3-pip
+The script was tested and build on kali-linux 23 July 2020
 
-#BuT i DoN't HaVe PyThOn3! -> sudo apt install -y python3 python3-pip
-
-#The script was tested and build on kali-linux 23 July 2020
 
 credits (for used tools/components)
 wordlists:  https://raw.githubusercontent.com/danielmiessler/
 gobuster:  https://github.com/OJ/gobuster
 dirhunter:  https://github.com/Nekmo/dirhunt
 And more! (tools like pip3 etc)
+
 
 PS: please steal my code and make something better ;)
