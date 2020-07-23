@@ -1,7 +1,8 @@
 # weebpage
 Weebpage.py is an automated webpage link finder.
 
-What does it do?; 
+What does it do?;
+- It makes everything SUPER EASY for you
 - It looks for robots.txt and scrapes it for xml sitemaps and links
 - It looks for xml sitemaps and scrapes them for links
 - It scrapes static html webpages for links
@@ -34,3 +35,5 @@ wordlists:  https://raw.githubusercontent.com/danielmiessler/
 gobuster:  https://github.com/OJ/gobuster
 dirhunter:  https://github.com/Nekmo/dirhunt
 And more! (tools like pip3 etc)
+
+PS: please steal my code and make something better ;)
