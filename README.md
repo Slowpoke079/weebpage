@@ -38,16 +38,11 @@ BuT i DoN't HaVe PyThOn3! -> sudo apt install -y python3 python3-pip
 # Other
 The script was tested and build on kali-linux 23 July 2020
 
-
 credits (for used tools/components)
 
 wordlists:  https://raw.githubusercontent.com/danielmiessler/
-
 gobuster:  https://github.com/OJ/gobuster
-
 dirhunter:  https://github.com/Nekmo/dirhunt
-
 And more! (tools like pip3 etc)
-
 
 PS: please steal my code and make something better ;)
