@@ -48,4 +48,4 @@ credits (for used tools/components)
 - And more! (tools like pip3 etc)
 
 
-PS: please steal my code and make something better ;)
+PS: please steal my code and make something better :)
