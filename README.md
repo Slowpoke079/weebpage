@@ -1,4 +1,4 @@
-# weebpage
+# weebpage.py
 Weebpage.py is an automated webpage link finder.
 
 What does it do?;
