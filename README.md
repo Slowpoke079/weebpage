@@ -33,7 +33,7 @@ Now simply follow the script, trust me it is easy
 ![github-small](https://github.com/Slowpoke079/weebpage/blob/master/image.png)
 
 
-BuT i DoN't HaVe PyThOn3! -> sudo apt install -y python3 python3-pip
+BuT i DoN't HaVe PyThOn3! -> $ sudo apt install -y python3 python3-pip
 
 
 
