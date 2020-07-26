@@ -22,6 +22,11 @@ What it does not;
 
 # How to use?
 
+
+```console
+my@pc:~$ sudo apt install -y python3
+```
+
 ```console
 my@pc:~$ git clone https://github.com/Slowpoke079/weebpage.git
 ```
@@ -41,9 +46,6 @@ my@pc:~$ python3 weebpage.py
 
 Now simply follow the script;
 ![github-small](https://github.com/Slowpoke079/weebpage/blob/master/image.png)
-
-
-BuT i DoN't HaVe PyThOn3! -> $ sudo apt install -y python3 python3-pip
 
 
 
