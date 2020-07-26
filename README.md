@@ -1,5 +1,6 @@
 # weebpage.py
-Weebpage.py is an automated webpage link finder.
+Weebpage.py is an automated webpage finder. 
+Specify a single target web URL and it will automate finding new webpages for you.
 
 
 What does it do?;
