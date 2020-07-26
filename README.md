@@ -15,7 +15,7 @@ What does it do?;
 
 
 What it does not;
-- It could crawl recursively, but i chose not to do so. Crawling recursively could impact your target negatively by accidentaly. For example doing a "GET" on a webpage url that triggers a SQL database reset etc.
+- It could crawl recursively, but i chose not to do so. Crawling recursively could impact your target/costumer negatively on accident. For example doing an accidental "GET" on a automated and newly found webpage url that triggers an SQL database modification like a DB reset or deleting a user.
 
 
 
