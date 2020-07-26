@@ -363,7 +363,7 @@ def enumerator():
 		print ("\n")
 		print ("Scanning with dirbuster, please wait! (this can take some time)")
 		print ("\n")
-		with open ("target.txt") as domainfile:
+		with open ("target.txt") as domainfile:				driver.quit()
 			for line in domainfile:
 				domain = str(line.strip("\n"))
 				webpage = domain
@@ -459,6 +459,7 @@ def crawlers():
 							file = open("list.txt", "a")
 							file.write(href + "\n")
 							file.close()
+				driver.quit()
 
 	def static_webpage_crawler():
 		clear_terminal()
