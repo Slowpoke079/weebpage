@@ -22,16 +22,24 @@ What it does not;
 
 # How to use?
 
-$ git clone https://github.com/Slowpoke079/weebpage.git
+```console
+my@pc:~$ git clone https://github.com/Slowpoke079/weebpage.git
+```
 
-$ cd weebpage
+```console
+my@pc:~$ cd weebpage
+```
 
-$ chmod +x weebpage.py
+```console
+my@pc:~$ chmod +100 weebpage.py
+```
 
-$ python3 weebpage.py
+```console
+my@pc:~$ python3 weebpage.py
+```
 
 
-Now simply follow the script, trust me it is easy
+Now simply follow the script;
 ![github-small](https://github.com/Slowpoke079/weebpage/blob/master/image.png)
 
 
