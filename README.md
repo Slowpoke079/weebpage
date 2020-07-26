@@ -12,6 +12,7 @@ What does it do?;
 - It used Gobuster for directory bruteforcing to find links
 - It uses Dirhunter for extending page finding
 - It tries to make your day better with bad ascii art and a pun! Because a sad redteam is a bad redteam.
+- It stays on domain. (It won't crawl other domain names then the initial specified "seed url".) So you will stay in your costumers scope!
 
 
 What it does not;
