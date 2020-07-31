@@ -9,10 +9,11 @@ What does it do?;
 - It looks for xml sitemaps and scrapes them for links
 - It scrapes static html webpages for links
 - It scrapes rendered javascript webpages for links
-- It used Gobuster for directory bruteforcing to find links
-- It uses Dirhunter for extending page finding
+- It used Gobuster for directory bruteforcing to find links (on the first page only)
+- It uses Dirhunter for extending page finding (on the first page only)
 - It tries to make your day better with bad ascii art and a pun! Because a sad redteam is a bad redteam.
 - It stays on domain. (It won't crawl other domain names then the initial specified "seed url".) So you will stay in your costumers scope!
+- weebpages.py (not weebpage.py) will scan recursively, found links will be reused for scanning for new pages.
 
 
 What it does not;
