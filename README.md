@@ -79,8 +79,8 @@ my@pc:~$ python3 weebpages.py
 
 
 # Output
-Output (found webpage links) will be shown in the terminal.
-Output will also be saved to "output.txt" like this small list example.
+- Output (found webpage links) will be shown in the terminal.
+- Output will also be saved to "output.txt" like this small list example.
 ![github-small](https://github.com/Slowpoke079/weebpage/blob/master/image3.png)
 
 
