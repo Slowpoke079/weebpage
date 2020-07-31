@@ -50,6 +50,7 @@ Now simply follow the script;
 
 ![github-small](https://github.com/Slowpoke079/weebpage/blob/master/image2.png)
 
+Output will also be saved to output.txt.
 
 
 # How to scan webpages recursively?
