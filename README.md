@@ -50,7 +50,11 @@ Now simply follow the script;
 
 ![github-small](https://github.com/Slowpoke079/weebpage/blob/master/image2.png)
 
-Output will also be saved to output.txt.
+
+# Output
+Output will be saved to output.txt.
+Output will also be shown like this small list example.
+![github-small](https://github.com/Slowpoke079/weebpage/blob/master/image3.png)
 
 
 # How to scan webpages recursively?
