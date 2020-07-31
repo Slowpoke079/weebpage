@@ -74,6 +74,7 @@ my@pc:~$ chmod +100 weebpages.py
 
 ```console
 my@pc:~$ python3 weebpages.py
+```
 
 
 # Other
