@@ -47,6 +47,7 @@ my@pc:~$ python3 weebpage.py
 Now simply follow the script;
 ![github-small](https://github.com/Slowpoke079/weebpage/blob/master/image.png)
 
+![github-small](https://github.com/Slowpoke079/weebpage/blob/master/image2.png)
 
 
 # Other
