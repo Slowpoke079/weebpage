@@ -51,11 +51,6 @@ Now simply follow the script;
 ![github-small](https://github.com/Slowpoke079/weebpage/blob/master/image2.png)
 
 
-# Output
-Output will be saved to output.txt.
-Output will also be shown like this small list example.
-![github-small](https://github.com/Slowpoke079/weebpage/blob/master/image3.png)
-
 
 # How to scan webpages recursively?
 For this i made a small clone of weebpage.py with some small edits called weebpages.py. The process of using the tool is the same as with weebpage.py If you already did a gitclone you don't need to do that again ;).
@@ -80,6 +75,14 @@ my@pc:~$ chmod +100 weebpages.py
 ```console
 my@pc:~$ python3 weebpages.py
 ```
+
+
+
+# Output
+Output will be saved to output.txt.
+Output will also be shown like this small list example.
+![github-small](https://github.com/Slowpoke079/weebpage/blob/master/image3.png)
+
 
 
 # Other
