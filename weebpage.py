@@ -115,6 +115,11 @@ def cleanup():
 		os.remove(filepath)
 	else:
 		None
+	filepath = ("checked.txt")
+	if os.path.exists(filepath):
+		os.remove(filepath)
+	else:
+		None
 
 def install_requirements():
 	os.system("sudo apt install -y git")
@@ -122,8 +127,9 @@ def install_requirements():
 	os.system("sudo apt install -y python3")
 	os.system("sudo apt install -y python3-pip")
 	os.system("sudo apt install -y gobuster")
-	os.system("sudo pip3 install dirhunt")
-	os.system("sudo pip3 install bs4")
+	os.system("pip3 install dirhunt")
+	os.system("pip3 install http.client")
+	os.system("pip3 install tqdm")
 	os.system("rm common.txt")
 	os.system("rm big.txt")
 	os.system("wget https://raw.githubusercontent.com/danielmiessler/SecLists/master/Discovery/Web-Content/common.txt")
@@ -142,16 +148,16 @@ def already_installed():
 	clear_terminal()
 	bad_joke_banner()
 	bad_joke_banner2()
-	print("Do you want to install the requirements, run the script or clean up previously left files?")
-	print("enter: [run], [install] or [clean]")
-	print("\n")
+	print ("Do you want to install the requirements, run the script or clean up previously left files?")
+	print ("enter: [run], [install] or [clean]")
+	print ("\n")
 	install = ("install", "INSTALL")
 	run = ("run", "RUN", "ayayaya")
 	clean = ("clean", "CLEAN", "ewh, weebs")
 	choice = input()
 	if choice in install:
 		install_requirements()
-		print("requirements are now installed!")
+		print ("requirements are now installed!")
 	if choice in run:
 		return True
 	if choice in clean:
@@ -168,8 +174,8 @@ def already_installed():
 			None
 		clear_terminal()
 		bad_joke_banner()
-		print("\n")
-		print("The leftover files have been cleaned up!")
+		print ("\n")
+		print ("The leftover files have been cleaned up!")
 		exit()
 	else:
 		already_installed()
@@ -181,21 +187,27 @@ if os.path.exists(filepath):
 else:
 	None
 
-from bs4 import BeautifulSoup
-import requests
+############################ PART 2 - NEW IMPORTS ############################
+import os
+from time import sleep
+from tqdm import tqdm
+from tqdm import trange
+from selenium import webdriver
+from selenium.webdriver.firefox.options import Options as FirefoxOptions
+import urllib.request
 
-############################ PART 2 - SET TARGET FILES ############################
+############################ PART 3 - SET TARGET FILES ############################
 def target():	
 	clear_terminal()
 	bad_joke_banner()
-	print("\n")
+	print ("\n")
 	print ("Enter target webpage, use format: https://www.yourwebsite.com or http://www.yourwebsite.com")
 	webpage = input("Enter target webpage: ")
 	file = open("target.txt", "w")
 	file.write(webpage)
 	file.close()
 
-############################ PART 3 - ROBOTS AND SITEMAPS #########################
+############################ PART 4 - ROBOTS AND SITEMAPS #########################
 def robots_and_sitemaps():
 	
 	def robots():
@@ -335,7 +347,7 @@ def robots_and_sitemaps():
 
 	sitemaps()
 
-############################ PART 4 - ONE TIME ENUMERATORS ############################
+############################ PART 5 - ONE TIME ENUMERATORS ############################
 def enumerator():
 
 	def dirhunter():
@@ -363,7 +375,7 @@ def enumerator():
 		print ("\n")
 		print ("Scanning with dirbuster, please wait! (this can take some time)")
 		print ("\n")
-		with open ("target.txt") as domainfile:				driver.quit()
+		with open ("target.txt") as domainfile:
 			for line in domainfile:
 				domain = str(line.strip("\n"))
 				webpage = domain
@@ -430,71 +442,42 @@ def enumerator():
 	list2target()
 	minicleanup()
 
-############################ PART 5 - CRAWLERS ############################
-from bs4 import BeautifulSoup
-import requests
-
+############################ PART 6 - CRAWLERS ############################
 def crawlers():
 	
-	def rendered_webpage_crawler():
+	def Selenium_Crawler():
 		clear_terminal()
 		bad_joke_banner()
+		amount = sum(1 for line in open("target.txt","r"))
 		print ("\n")
-		print ("crawling javascript rendered webpages with selenium, please wait!")
+		print ("Crawling " +(str(amount))+ " webpages to find new pages for you, please wait!")
 		print ("\n")
-		from selenium import webdriver
-		from selenium.webdriver.firefox.options import Options as FirefoxOptions
-		with open ("target.txt") as domainfile:
-			for line in domainfile:
-				domain = domain = str(line.strip("\n"))
-				options = FirefoxOptions()
-				options.add_argument("--headless")
-				driver = webdriver.Firefox(options=options)
-				driver.get(domain)
-				elems = driver.find_elements_by_xpath("//a[@href]")
-				for elem in elems:
-					href = (elem.get_attribute("href"))
-					if href is not None:
-						if href.startswith(domain):
-							file = open("list.txt", "a")
-							file.write(href + "\n")
-							file.close()
-				driver.quit()
-
-	def static_webpage_crawler():
-		clear_terminal()
-		bad_joke_banner()
-		print ("\n")
-		print ("crawling static html webpages with beautifulsoup, please wait!")
-		print ("\n")
-		with open ("target.txt") as domainfile:
-			for line in domainfile:
-				domain = line
-		webpage = (str(domain).strip("\n"))
-		page = requests.get(webpage)
-		data = page.text
-		soup = BeautifulSoup(data, "html.parser")
-		for link in soup.find_all("a"):
-			links = link.get("href")
-			if links is not None:
-				file = open("webpages.txt", "a")
-				file.write(links+"\n")
-				file.close()
-		with open ("webpages.txt") as origin:
-			for line in origin:
-				if webpage in line:
-					file = open("list.txt", "a")
-					file.write(line)
-					file.close()
-				if line.startswith("/"):
-					file = open("list.txt", "a")
-					file.write(webpage + line)
-					file.close()
+		with open("target.txt","r") as f:
+			for line in tqdm(f, total=amount):
+				try:
+					domain = str(line.strip("\n"))
+					options = FirefoxOptions()
+					options.add_argument("--headless")
+					driver = webdriver.Firefox(options=options)
+					driver.get(domain)
+					elems = driver.find_elements_by_xpath("//a[@href]")
+					for elem in elems:
+						href = (elem.get_attribute("href"))
+						if href is not None:
+							if href.startswith(domain):
+								file = open("list.txt", "a")
+								file.write(href + "\n")
+								file.close()
+					driver.quit()
+				except (Exception):
+					pass
+		os.system("sort -u list.txt > sorted_output.txt")
 
 	def write_output():
 		filepath = ("list.txt")
 		if os.path.exists(filepath):
-			os.system("cat list.txt >> output.txt")
+			os.system("cat sorted_output.txt >> output.txt")
+			os.system("cat sorted_output.txt >> target.txt")
 		else:
 			None
 
@@ -514,60 +497,128 @@ def crawlers():
 			os.remove(filepath)
 		else:
 			None
-
-	rendered_webpage_crawler()
-	static_webpage_crawler()
-	write_output()
-	minicleanup()
-
-############################ PART X1 - OUTPUT CLEANERS ############################
-def sorting_and_cleaning():
-
-	def remove_duplicates():
-		with open ("output.txt") as read:
-			uniqlines = set(read.readlines())
-			with open("output2.txt", "w") as write:
-				write.writelines(set(uniqlines))
-
-	def sorting():
-		with open ("output2.txt") as input_file:
-			lines = input_file.readlines()
-			sortedfile = (sorted(lines))
-			with open("output.txt", "w") as output_file:
-				output_file.writelines(sortedfile)
-
-	def minicleanup():
-		filepath = ("output2.txt")
+		filepath = ("output_selenium.txt")
+		if os.path.exists(filepath):
+			os.remove(filepath)
+		else:
+			None
+		filepath = ("sorted_output.txt")
 		if os.path.exists(filepath):
 			os.remove(filepath)
 		else:
 			None
 
-	remove_duplicates()
-	sorting()						
+	Selenium_Crawler()
+	write_output()
+	minicleanup()
 
-############################ PART X3 - SHOW OUTPUT ############################
-def show_found_webpages():
-	cleanup()
+############################ PART 7 - OUTPUT CLEANERS ############################
+def sorting_and_cleaning():
+	os.system("sort -u output.txt > output2.txt")
+	os.system("sort -u output2.txt > output.txt")
+	os.system("sort -u target.txt > target2.txt")
+	os.system("sort -u target2.txt > target.txt")
+		
+	def minicleanup():
+		filepath = ("target2.txt")
+		if os.path.exists(filepath):
+			os.remove(filepath)
+		else:
+			None
+		filepath = ("output2.txt")
+		if os.path.exists(filepath):
+			os.remove(filepath)
+		else:
+			None
+	minicleanup()
+
+############################ PART 8 - HTTP LINK CHECKER ############################
+def http200_checker():
+	os.system('cls' if os.name == 'nt' else 'clear')
+	filepath = ("checked.txt")
+	if os.path.exists(filepath):
+		os.remove(filepath)
+		os.system("touch checked.txt")
+	else:
+		os.system("touch checked.txt")
+	filepath = ("output.txt")
+	if os.path.exists(filepath):
+		None
+	else:
+		os.system("touch output.txt")	
+
 	clear_terminal()
 	bad_joke_banner()
-	print("\n")
-	print("found webpages: ")
-	sorting_and_cleaning()
-	os.system("cat output.txt")
-	print("\n")	
-	print ("output is saved in output.txt!")
-	print("\n")
+	print ("\n")
+	print ("Checking if found links are dead-or-alive (lol) please wait, it won't take long!")
+	print ("\n")
+	with open("output.txt","r") as f:
+		for line in f:
+			try:
+				webpage = str(line.strip("\n"))
+				req = urllib.request.urlopen(webpage).getcode()
+				print (webpage, "HTTP", req)
+				os.system("echo " + webpage + " >> checked.txt")
+				sleep(0.010)
+			except Exception:
+				webpage = str(line.strip("\n"))
+				print (webpage + " ", "DEAD")
+				sleep(0.010)
 
-############################ EXECUTION FLOW ############################
+	os.system("cat checked.txt > target.txt")
+	os.system("cat checked.txt > output.txt")
+	sorting_and_cleaning()
+
+	def minicleanup():
+		filepath = ("checked.txt")
+		if os.path.exists(filepath):
+			os.remove(filepath)
+		else:
+			None
+	minicleanup()
+http200_checker()
+
+############################ PART 9 - SHOW OUTPUT ############################
+def show_found_webpages():
+	clear_terminal()
+	bad_joke_banner()
+	print ("\n")
+	print ("Found webpages: ")
+	print ("\n")
+	sorting_and_cleaning()
+	with open ("target.txt") as domainfile:
+		for line in domainfile:
+			target0 = (str(line.strip("\n")))
+			target = (target0 + "/")
+			os.system("cat output.txt | grep " +(target)+ " >> target.txt")
+	
+	sorting_and_cleaning()
+	os.system("cat target.txt >> output.txt")
+	sorting_and_cleaning()
+		
+	filepath = ("target.txt")
+	if os.path.exists(filepath):
+		os.remove(filepath)
+	else:
+		None
+
+	os.system("cat output.txt")
+	print ("\n")	
+	print ("output is saved in output.txt!")
+	print ("\n")
+
+############################ PART 10 - EXECUTION FLOW ############################
 target()					#target.txt holds single http/s link
 robots_and_sitemaps()				#output.txt is created and filled with found links.
-cleanup()					#cleans not used files up (exept for target.txt and output.txt)
+cleanup()					#cleans not used files up (except for target.txt and output.txt)
+
 enumerator()					#output is appended into output.txt
-cleanup()					#cleans not used files up (exept for target.txt and output.txt)
+cleanup()					#cleans not used files up (except for target.txt and output.txt)
 sorting_and_cleaning()				#sorts and removes duplicates from output.txt
+
 crawlers()					#webcrawlers and cleaners, output is in output.txt
 sorting_and_cleaning()				#sorts and removes duplicates from target.txt
+http200_checker()				#checks if found links are alive or dead/bogus links
+
 cleanup()					#cleans up all created files (excluding output.txt)
 show_found_webpages()				#shows found webpage urls
-cleanup()					#cleans up all created files (excluding output.txt)
