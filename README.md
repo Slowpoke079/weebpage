@@ -50,8 +50,33 @@ Now simply follow the script;
 ![github-small](https://github.com/Slowpoke079/weebpage/blob/master/image2.png)
 
 
+
+# How to scan webpages recursively?
+For this i made a small clone of weebpage.py with some small edits called weebpages.py. The process of using the tool is the same as with weebpage.py If you already did a gitclone you don't need to do that again ;).
+
+
+```console
+my@pc:~$ sudo apt install -y python3
+```
+
+```console
+my@pc:~$ git clone https://github.com/Slowpoke079/weebpage.git
+```
+
+```console
+my@pc:~$ cd weebpage
+```
+
+```console
+my@pc:~$ chmod +100 weebpages.py
+```
+
+```console
+my@pc:~$ python3 weebpages.py
+
+
 # Other
-The script was tested and build on kali-linux 23 July 2020
+The script was tested and build on kali-linux 31 July 2020
 
 
 credits (for used tools/components)
