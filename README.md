@@ -94,6 +94,3 @@ credits (for used tools/components)
 - Gobuster:  https://github.com/OJ/gobuster
 - Dirhunter:  https://github.com/Nekmo/dirhunt
 - And more! (tools like pip3 etc)
-
-
-PS: please steal my code and make something better :)
