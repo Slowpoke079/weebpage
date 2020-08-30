@@ -47,7 +47,9 @@ my@pc:~$ python3 weebpage.py
 
 Now simply follow the script;
 ![github-small](https://github.com/Slowpoke079/weebpage/blob/master/image.png)
-
+```
+Enter a web url like; http://192.68.56.1 or https://192.68.56.1 or http://192.68.56.1:65524 or http://192.68.56.1:80 or http://192.68.56.1:80/whatever/
+```
 ![github-small](https://github.com/Slowpoke079/weebpage/blob/master/image2.png)
 
 
